@@ -14,11 +14,12 @@ public class DecryptAgent {
             System.exit(0);
             return;
         }
-
-        StringTokenizer stringTokenizer = new StringTokenizer("&");
+        StringTokenizer stringTokenizer = new StringTokenizer(args,",");
         String key = stringTokenizer.nextToken();
+        System.out.println(key);
         String packageName = stringTokenizer.nextToken();
-        instr.addTransformer(new BusinessClassFileTranformer(key));
+        System.out.println(packageName);
+        instr.addTransformer(new BusinessClassFileTranformer(key,packageName));
         ClassPool classPool = ClassPool.getDefault();
        try{
            classPool.appendClassPath(new LoaderClassPath(classPool.getClass().getClassLoader()));
@@ -88,7 +89,7 @@ public class DecryptAgent {
             stringBuffer.append("private static byte[] readStream(String key,String name,String path,java.io.InputStream inputStream,boolean close) throws Exception");
             stringBuffer.append("{");
             stringBuffer.append("byte [] bytes = readStream(inputStream, close);");
-            stringBuffer.append("boolean r = name.contains(\"/BOOT-INF/classes!/"+packageName+"\")&&!\"/BOOT-INF/classes!/"+packageName+"\".equals(name)&&!name.contains(\"common-0.0.1.jar\");");
+            stringBuffer.append("boolean r = name.contains(\"/BOOT-INF/classes!/"+packageName+"\")&&!name.contains(\"common-0.0.1.jar\");");
 //            stringBuffer.append("System.out.println(name+\"   \"+r+\" \"+path);");
             stringBuffer.append("if(r){");
             stringBuffer.append("bytes = com.yejia.agent.ClassDecryptUtil.decrypt(bytes, key);");
