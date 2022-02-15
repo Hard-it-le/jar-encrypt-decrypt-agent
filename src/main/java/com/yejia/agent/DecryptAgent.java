@@ -16,9 +16,7 @@ public class DecryptAgent {
         }
         StringTokenizer stringTokenizer = new StringTokenizer(args,",");
         String key = stringTokenizer.nextToken();
-        System.out.println(key);
         String packageName = stringTokenizer.nextToken();
-        System.out.println(packageName);
         instr.addTransformer(new BusinessClassFileTranformer(key,packageName));
         ClassPool classPool = ClassPool.getDefault();
        try{
