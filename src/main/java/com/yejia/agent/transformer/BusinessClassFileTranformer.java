@@ -4,6 +4,9 @@ import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
 
+/**
+ * @author yujiale
+ */
 public class BusinessClassFileTranformer implements ClassFileTransformer {
     private String password;
     private String packageName;

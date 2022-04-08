@@ -5,6 +5,9 @@ import javassist.*;
 import java.lang.instrument.Instrumentation;
 import java.util.StringTokenizer;
 
+/**
+ * @author yujiale
+ */
 public class DecryptAgent {
     private static final String CLASS_NAME = "org.springframework.core.type.classreading.SimpleMetadataReader";
     private static final String CLASS_NAME1 = "org.springframework.asm.ClassReader";

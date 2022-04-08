@@ -4,6 +4,9 @@ import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
 import java.security.SecureRandom;
 
+/**
+ * @author yujiale
+ */
 public class ClassDecryptUtil {
     /**
      * 解密
